@@ -7,6 +7,7 @@ import com.hita.mealplanner.model.User;
 import com.hita.mealplanner.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -20,8 +21,13 @@ public class UserService {
     }
 
     // READ
-    public List<User> geUsers() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    // READ 1
+    public Optional<User> getUser(Long id) {
+        return userRepository.findById(id);
     }
 
     // DELETE

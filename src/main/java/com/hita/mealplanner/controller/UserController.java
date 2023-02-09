@@ -2,8 +2,8 @@ package com.hita.mealplanner.controller;
 
 import java.util.List;
 
+import com.hita.mealplanner.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,16 +27,18 @@ public class UserController {
 
     @RequestMapping(value="/users", method=RequestMethod.GET)
     public List<User> readUsers() {
-        return userService.geUsers();
+        return userService.getAllUsers();
     }
 
     @RequestMapping(value="/users/{userId}", method=RequestMethod.PUT)
     public User readUsers(@PathVariable(value = "userId") Long id, @RequestBody User user) {
+        if(!userService.getUser(id).isPresent())throw new UserNotFoundException();
         return userService.updateUser(id, user);
     }
 
     @RequestMapping(value="/users/{userId}", method=RequestMethod.DELETE)
     public void deleteUsers(@PathVariable(value = "userId") Long id) {
+        if(!userService.getUser(id).isPresent())throw new UserNotFoundException();
         userService.deleteUser(id);
     }
 }
