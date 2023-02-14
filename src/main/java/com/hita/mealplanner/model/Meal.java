@@ -11,10 +11,10 @@ public class Meal {
     @Column(name="id")
     private Long id;
 
-    @Column(name="dish_name")
-    private String name;
+    @Column(name="dishName")
+    private String dishName;
 
-    @Column(name="user_id")
+    @Column(name="userId")
     private Long userId;
 
     public Long getId() {
@@ -25,12 +25,12 @@ public class Meal {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDishName() {
+        return dishName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDishName(String dishName) {
+        this.dishName = dishName;
     }
 
     public Long getUserId() {

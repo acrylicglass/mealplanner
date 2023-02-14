@@ -1,7 +1,9 @@
 package com.hita.mealplanner.service;
 
 import com.hita.mealplanner.model.Meal;
+import com.hita.mealplanner.model.User;
 import com.hita.mealplanner.repository.MealRepository;
+import com.hita.mealplanner.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class MealService {
 
     @Autowired
     MealRepository mealRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     // CREATE
     public Meal createMeal(Meal meal) {
@@ -29,6 +34,10 @@ public class MealService {
         return mealRepository.findById(mealId);
     }
 
+    public Optional<User> getUserById(Long userId) {
+        return userRepository.findById(userId);
+    }
+
     // DELETE
     public void deleteMeal(Long id) {
         mealRepository.deleteById(id);
@@ -37,7 +46,7 @@ public class MealService {
     // UPDATE
     public Meal updateMeal(Long mealId, Meal meal) {
         Meal mealToBeUpdated = mealRepository.findById(mealId).get();
-        mealToBeUpdated.setName(meal.getName());
+        mealToBeUpdated.setDishName(meal.getDishName());
         return mealRepository.save(mealToBeUpdated);
     }
 }
