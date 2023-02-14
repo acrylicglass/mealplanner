@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hita</groupId>
-	<artifactId>mealplanner</artifactId>
+	<artifactId>mealplannerAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>mealplanner</name>
 	<description>meal planner api </description>
